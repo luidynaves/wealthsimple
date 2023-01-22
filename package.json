@@ -1,0 +1,19 @@
+{
+  "name": "wealthsimple",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luidynaves/wealthsimple.git"
+  },
+  "author": "Luidy Naves",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luidynaves/wealthsimple/issues"
+  },
+  "homepage": "https://github.com/luidynaves/wealthsimple#readme"
+}

@@ -1,0 +1,21 @@
+{
+  "results": [
+    {
+      "object": "dividend",
+      "id": "custodian_account_activity-LP2bkTgNnHITWHRZfmdKUGAWXM",
+      "type": "dividend",
+      "account_id": "tfsa-ko_szhzy",
+      "symbol": "SRU.UN",
+      "country_code": "CA",
+      "effective_date": "2023-01-16",
+      "process_date": "2023-01-16",
+      "quantity": "0.0",
+      "market_price": { "amount": "1.0", "currency": "CAD" },
+      "market_value": { "amount": 5.29, "currency": "CAD" },
+      "book_value": { "amount": "0.0", "currency": "CAD" },
+      "net_cash": { "amount": "5.29", "currency": "CAD" },
+      "fx_rate": "1.0",
+      "order_id": null
+    }
+  ]
+}
