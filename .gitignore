@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Ignore real json data
+dividend_data_real.json
+fund_data_real.json

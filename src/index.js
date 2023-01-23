@@ -1,6 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
+const separator = `\n${'='.repeat(50)}`;
+const years = [ 2021, 2022, 2023 ];
+
 function pullData(file, action) {
     var filePath = path.join(__dirname, file);    
     fs.readFile(filePath, {encoding: 'utf-8'}, action);
@@ -18,44 +21,55 @@ function fetchDividendsBySymbol(data) {
     return result;
 }
 
-function transform(data) {
+function transformDividends(data) {
     return data.map((item) => {return { 'symbol': item.symbol, 'amount': item.market_value.amount, 'date': new Date(item.effective_date)}});
 }
 
-function fetchDividendsByYear(data, year) {
+function fetchDataByYear(data, year) {
     return data.filter((item) => {if (item.date.getFullYear() == year) return item;})
 }
 
-function sumDividends(data) {
-    return data.reduce((total, current) => total + current.amount, 0);
+function generateDataAmountByYear(data) {
+    years.forEach(element => {
+        console.log(`Total in ${element}: ${calculateAmount(fetchDataByYear(data, element))}`);
+    });
+}
+
+function calculateAmount(data) {
+    return data.reduce((total, current) => total + current.amount, 0).toFixed(2);
 }
 
 function summarizeDividends(err, data) {
-    var separator = `\n${'='.repeat(50)}`;
-    
     var fileData = JSON.parse(data).results;
-    var dividends = transform(fileData);    
+    var dividends = transformDividends(fileData);    
 
     console.log(separator)
     console.log('DIVIDENDS BY SYMBOL')
     console.log(`${JSON.stringify(fetchDividendsBySymbol(dividends), null, 2)}`);
     
     console.log(separator);
-    var dividends2021 = fetchDividendsByYear(dividends, 2021);
-    var dividends2022 = fetchDividendsByYear(dividends, 2022);    
-    var dividends2023 = fetchDividendsByYear(dividends, 2023);
-    var total2021 = sumDividends(dividends2021);
-    var total2022 = sumDividends(dividends2022);
-    var total2023 = sumDividends(dividends2023)
-    console.log(`Total in 2021: ${total2021}`);
-    console.log(`Total in 2022: ${total2022}`);
-    console.log(`Total in 2023: ${total2023}`);
-    console.log(`Total Increase from 2021 to 2022: ${total2022 - total2021}`);
+    console.log('DIVIDENDS BY YEAR');
+    generateDataAmountByYear(dividends);
 
-    console.log(separator)    
-    console.log(`Total Amount: ${sumDividends(dividends)}`);    
+    console.log(separator);    
+    console.log(`TOTAL AMOUNT: ${calculateAmount(dividends)}`);    
 }
 
+function transformFunds(data) {
+    return data.map((item) => { return { 'date': new Date(item.post_dated), 'amount': item.value.amount }; })
+}
 
+function summarizeFunds(err, data) {
+    const fileData = JSON.parse(data).results;
+    const funds = transformFunds(fileData);
 
-pullData('./data.json', summarizeDividends);
+    console.log(separator);
+    console.log(`TOTAL FUNDED: ${calculateAmount(funds)}`);
+
+    console.log(separator);
+    console.log('FUNDED BY YEAR')
+    generateDataAmountByYear(funds);
+}
+
+pullData('./fund_data.json', summarizeFunds);
+pullData('./dividend_data.json', summarizeDividends);
