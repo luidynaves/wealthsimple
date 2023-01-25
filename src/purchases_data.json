@@ -1,0 +1,61 @@
+{
+    "results": [
+      {
+        "object": "order",
+        "id": "order-0de9f59e-9734-4f18-938d-2462d983506c",
+        "account_hold_value": {
+          "amount": 0,
+          "currency": "CAD"
+        },
+        "account_id": "tfsa-ko_szhzy",
+        "account_value": {
+          "amount": 23.72,
+          "currency": "CAD"
+        },
+        "completed_at": "2023-01-19T20:05:24.675Z",
+        "created_at": "2023-01-19T19:33:05.420Z",
+        "fill_fx_rate": 1.371597,
+        "fill_quantity": 0.9195,
+        "filled_at": "2023-01-19T20:05:24.675Z",
+        "market_value": {
+          "amount": 17.29257675,
+          "currency": "USD"
+        },
+        "order_id": "order-0de9f59e-9734-4f18-938d-2462d983506c",
+        "order_sub_type": "fractional",
+        "order_type": "buy_value",
+        "perceived_filled_at": "2023-01-19T20:05:24.675Z",
+        "quantity": 0.9195,
+        "security_id": "sec-s-c8db149d73a64a30b76aec817c8cfbd6",
+        "security_name": "Ares Capital Corp",
+        "status": "posted",
+        "stop_price": null,
+        "symbol": "ARCC",
+        "time_in_force": "day",
+        "updated_at": "2023-01-19T20:13:03.590Z",
+        "limit_price": {
+          "amount": 23.72,
+          "currency": "USD"
+        },
+        "external_order_id": "order-0de9f59e-9734-4f18-938d-2462d983506c",
+        "external_order_batch_id": null,
+        "external_security_id": "sec-s-c8db149d73a64a30b76aec817c8cfbd6",
+        "account_currency": "CAD",
+        "market_currency": "USD",
+        "cancellation_cutoff": "2023-01-19T20:00:00.000Z",
+        "is_trade_desk_order": false,
+        "rejection_code": null,
+        "rejection_metadata": null,
+        "cashback_order": null,
+        "submittedTotalTransactionFee": {
+          "amount": "0.00",
+          "currency": "USD"
+        },
+        "filledTotalTransactionFee": {
+          "amount": "0.00",
+          "currency": "USD"
+        },
+        "auto_order_type": null
+      }
+    ]
+  }

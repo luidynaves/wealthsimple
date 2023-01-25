@@ -106,3 +106,4 @@ dist
 # Ignore real json data
 dividend_data_real.json
 fund_data_real.json
+purchases_data_real.json

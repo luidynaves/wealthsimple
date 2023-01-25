@@ -71,5 +71,19 @@ function summarizeFunds(err, data) {
     generateDataAmountByYear(funds);
 }
 
+function transformPurchases(data) {
+    const fullFilledPurchases = data.filter((item) => item.status == 'posted');
+    return fullFilledPurchases.map((item) => { return { 'symbol': item.symbol, 'date': new Date(item.completed_at), 'amount': item.account_value.amount, 'quantity': item.quantity, 'marketValue': item.market_value.amount, 'fxRate': item.fill_fx_rate }; })
+}
+
+function summarizePurchases(err, data) {
+    const fileData = JSON.parse(data).results;
+    const purchases = transformPurchases(fileData);
+
+    console.log(separator);
+    console.log(JSON.stringify(fetchDividendsBySymbol(purchases), null, 2));
+}
+
 pullData('./fund_data.json', summarizeFunds);
 pullData('./dividend_data.json', summarizeDividends);
+pullData('./purchases_data.json', summarizePurchases);
